@@ -107,11 +107,6 @@ button:disabled {
     background-color: var(--color-60);
 }
 
-#clear-btn {
-    color: var(--color-60);
-    background-color: var(--color-10);
-}
-
 #output-section {
     flex: 1 1 25%; 
     max-width: 95%;
