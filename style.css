@@ -145,3 +145,17 @@ button:disabled {
     background-color: var(--color-hover);
     color: var(--color-10);
 }
+
+#notice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+
+}
+
+#notice img {
+    width: 100%;
+    margin-bottom: 10px;
+}
