@@ -40,15 +40,40 @@ function disabledButtons() {
 }
 
 function handleInput() {
+    let validInput = validateInput();
 
+    encryptBtn.disabled = !validInput;
+    decryptBtn.disabled = !validInput;
+}
+
+function validateInput() {
+    const inputText = input.value.trim();
+
+    if (inputText === '') return false;
+
+    return (regexValidator.test(inputText));
 }
 
 function encrypt() {
+    let encryptedText = input.value;
 
+    for (let [key, value] of Object.entries(keys)) {
+        const regex = new RegExp(key, 'g');
+        encryptedText = encryptedText.replace(regex, value);
+    }
+
+    output.value = encryptedText;
 }
 
 function decrypt() {
+    let decryptedText = input.value;
 
+    for (let [key, value] of Object.entries(keys)) {
+        const regex = new RegExp(value, 'g');
+        decryptedText = decryptedText.replace(regex, key);
+    }
+    
+    output.value = decryptedText;
 }
 
 function copy() {
