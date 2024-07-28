@@ -54,6 +54,26 @@ function validateInput() {
     return (regexValidator.test(inputText));
 }
 
+function clearInput() {
+    input.value = '';
+}
+
+function enableCopy() {
+    copyBtn.disabled = false;
+}
+
+function disabledCopy() {
+    copyBtn.disabled = true;
+}
+
+function scrollToInput() {
+    input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function scrollToOutput() {
+    output.scrollIntoView({ behavior: 'smooth' });
+}
+
 function encrypt() {
     let encryptedText = input.value;
 
@@ -62,8 +82,8 @@ function encrypt() {
         encryptedText = encryptedText.replace(regex, value);
     }
 
-    output.value = encryptedText;
-    copyBtn.disabled = false;
+    output.innerText = encryptedText;
+    showOutput();
 }
 
 function decrypt() {
@@ -74,8 +94,15 @@ function decrypt() {
         decryptedText = decryptedText.replace(regex, key);
     }
     
-    output.value = decryptedText;
-    copyBtn.disabled = false;
+    output.innerText = decryptedText;
+    showOutput();
+}
+
+function showOutput() {
+    clearInput();
+    disabledButtons();
+    enableCopy();
+    scrollToOutput();
 }
 
 async function copy() {
@@ -84,8 +111,10 @@ async function copy() {
 
     await navigator.clipboard.writeText(outputText);
     output.innerText = '';
+    scrollToInput();
 
     copyBtn.textContent = 'Copied!';
+    disabledCopy();
     setTimeout(() => { 
         copyBtn.textContent = btnText; 
     }, 1500);
