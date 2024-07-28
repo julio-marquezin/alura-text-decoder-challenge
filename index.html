@@ -4,10 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Text Encoder</title>
+    <link rel="shortcut icon" type="imagex/png" href="assets/icon.png">
+    <title>Text Decoder</title>
 </head>
 <body>
-    
+    <main id="input-section">
+        <img id="logo" src="assets/logo.png" alt="Alura Logo">
+
+        <h1 id="title">Type your text</h1>
+
+        <textarea id="input-text" placeholder="Type your text here..."></textarea>
+
+        <p><small>Only lowercase letters and no accent.</small></p>
+        <div id="buttons-container">
+            <button id="encrypt-btn">Encrypt</button>
+            <button id="decrypt-btn">Decrypt</button>
+        </div>
+    </main>
+
+    <section id="output-section">
+        <div id="output-container">
+            <h2>Output Text:</h2>
+            <textarea id="output-text"></textarea>
+            <button id="copy-btn">Copy</button>
+        </div>
+
+        <div id="notice">
+            <img src="assets/no-message.png" alt="No messages found">
+            <h3>No messages found</h3>
+            <p>Enter text you wanted to encrypt or decrypt</p>
+        </div>
+    </section>
+
     <script src="script.js"></script>
 </body>
 </html>
