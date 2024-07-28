@@ -1,3 +1,4 @@
+// Variables
 const input = document.getElementById('input-text');
 const output = document.getElementById('output-text');
 const regexValidator = /^[a-z\s]+$/;
@@ -7,11 +8,18 @@ const encryptBtn = document.getElementById('encrypt-btn');
 const decryptBtn = document.getElementById('decrypt-btn');
 const copyBtn = document.getElementById('copy-btn');
 
+const notice = document.getElementById('notice');
+const outputView = document.getElementById('output-container');
+const noticeDisplay = notice.style.display;
+const outputDisplay = outputView.style.display;
+
+// Initialization
 init();
 
 function init() {
     input.addEventListener('input', handleInput);
-    output.readonly = true;
+    output.setAttribute('readonly', true);
+    outputView.style.display = 'none';
 
     initKeys();
     initButtons();
@@ -33,12 +41,23 @@ function initButtons() {
     disabledButtons();
 }
 
+// Utils
 function disabledButtons() {
     encryptBtn.disabled = true;
     decryptBtn.disabled = true;
     copyBtn.disabled = true;
 }
 
+// Scrolling
+function scrollToInput() {
+    input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function scrollToOutput() {
+    output.scrollIntoView({ behavior: 'smooth' });
+}
+
+// Input
 function handleInput() {
     let validInput = validateInput();
 
@@ -58,22 +77,31 @@ function clearInput() {
     input.value = '';
 }
 
-function enableCopy() {
-    copyBtn.disabled = false;
+// Show
+function showInput() {
+    disabledCopy();
+    scrollToInput();
+    showNotice();
 }
 
-function disabledCopy() {
-    copyBtn.disabled = true;
+function showOutput() {
+    outputView.style.display = outputDisplay;
+    notice.style.display = 'none';
+    clearInput();
+    disabledButtons();
+    enableCopy();
+    scrollToOutput();
 }
 
-function scrollToInput() {
-    input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+function showNotice() {
+    outputView.style.display = 'none';
+    notice.style.display = noticeDisplay;
+
+    disabledButtons();
+    scrollToInput();
 }
 
-function scrollToOutput() {
-    output.scrollIntoView({ behavior: 'smooth' });
-}
-
+// Encryption/Decryption
 function encrypt() {
     let encryptedText = input.value;
 
@@ -98,24 +126,17 @@ function decrypt() {
     showOutput();
 }
 
-function showOutput() {
-    clearInput();
-    disabledButtons();
-    enableCopy();
-    scrollToOutput();
+// Copy
+function enableCopy() {
+    copyBtn.disabled = false;
+}
+
+function disabledCopy() {
+    copyBtn.disabled = true;
 }
 
 async function copy() {
-    const outputText = output.innerText;
-    const btnText = copyBtn.textContent;
-
+    const outputText = output.value;
     await navigator.clipboard.writeText(outputText);
-    output.innerText = '';
-    scrollToInput();
-
-    copyBtn.textContent = 'Copied!';
-    disabledCopy();
-    setTimeout(() => { 
-        copyBtn.textContent = btnText; 
-    }, 1500);
+    showInput();
 }
