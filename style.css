@@ -53,3 +53,40 @@ button:disabled {
     background-color: #cccccc;
 }
 
+#input-section {
+    flex: 1 1 70%;
+    max-width: 95%;
+    height: var(--section-height);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--color-30);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px; 
+    box-sizing: border-box;
+}
+
+#logo {
+    width: 100px;
+}
+
+#title {
+    font-weight: bold;
+    color: var(--color-10);
+    margin-bottom: 20px;
+}
+
+#input-text {
+    flex: 1 1 30%;
+    width: 80%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#input-text::placeholder {
+    color: var(--color-10);
+}
+
