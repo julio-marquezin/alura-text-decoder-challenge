@@ -63,6 +63,7 @@ function encrypt() {
     }
 
     output.value = encryptedText;
+    copyBtn.disabled = false;
 }
 
 function decrypt() {
@@ -74,8 +75,18 @@ function decrypt() {
     }
     
     output.value = decryptedText;
+    copyBtn.disabled = false;
 }
 
-function copy() {
+async function copy() {
+    const outputText = output.innerText;
+    const btnText = copyBtn.textContent;
 
+    await navigator.clipboard.writeText(outputText);
+    output.innerText = '';
+
+    copyBtn.textContent = 'Copied!';
+    setTimeout(() => { 
+        copyBtn.textContent = btnText; 
+    }, 1500);
 }
