@@ -110,7 +110,7 @@ async function copy() {
     const btnText = copyBtn.textContent;
 
     await navigator.clipboard.writeText(outputText);
-    output.innerText = '';
+    output.value = '';
     scrollToInput();
 
     copyBtn.textContent = 'Copied!';
