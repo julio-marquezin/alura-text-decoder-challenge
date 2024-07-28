@@ -22,3 +22,34 @@ body {
     font-family: Arial, sans-serif;
 }
 
+textarea {
+    border: none;
+    border-radius: 5px;
+    resize: none;
+    color: var(--color-10);    
+    font-size: 20px;
+}
+
+button {
+    width: 300px;
+    height: 50px;
+    background-color: var(--color-10);
+    color: var(--color-60);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    opacity: .5;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    background-color: #cccccc;
+}
+
