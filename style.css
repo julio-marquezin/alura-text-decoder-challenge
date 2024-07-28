@@ -90,3 +90,25 @@ button:disabled {
     color: var(--color-10);
 }
 
+#buttons-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#encrypt-btn {
+    color: var(--color-60);
+    background-color: var(--color-10);
+}
+
+#decrypt-btn {
+    color: var(--color-10);
+    background-color: var(--color-60);
+}
+
+#clear-btn {
+    color: var(--color-60);
+    background-color: var(--color-10);
+}
+
