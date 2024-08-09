@@ -25,7 +25,6 @@ The **Alura Text Decoder Challenge** is a project developed as part of the chall
   - If the character is not a key, it remains unchanged.
 
 ## Features
-- **Custom Cipher**: Implementation of a custom cipher algorithm for encrypting and decrypting texts.
 - **Validation**: Ensures input text consists only of lowercase letters and spaces.
 - **Simple Interface**: User-friendly interface for interacting with the decoder.
 - **Auto-Scrolling**: Automatically scrolls to input or output areas for better user experience.
